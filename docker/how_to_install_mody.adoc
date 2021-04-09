@@ -1,0 +1,41 @@
+= mody のインストール方法
+
+dockerはdocker-engine を商用に使うと知らないうちに怖いことになりそう（ライセンス違反を踏んでしまう？）なので、 +
+オープンソース版dockerである moby-engine を使うことにする。
+
+mobyとは
+
+多分由来は白鯨のモビー・ディック。
+
+== 結論としてやれば良いこと
+
+Ubuntu-20.04 ならば、以下コマンドを１行ずつ実行すればインストールされる。
+
+```Shell
+curl https://packages.microsoft.com/config/ubuntu/20.04/prod.list > ./microsoft-prod.list
+sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
+sudo apt update
+sudo apt install moby-engine moby-cli
+```
+
+インストールされたら、以下のようにバージョンに `+azure` が付与される。
+
+```
+$ docker --version
+Docker version 20.10.5+azure, build 55c4c88966a912ddb365e2d73a4969e700fc458f
+```
+
+ちなみに https://docs.docker.com/engine/install/ubuntu/[Docker公式のインストール手順]に従うと、以下のようなバージョンになる。
+
+== 参考文献
+
+ここに書かれていたことをもとに記載してます。 +
+https://github.com/Azure/iotedge/issues/3211
+
+== 愚痴
+
+Dockerは時期によって +
+Docker EE, Docker CE と呼んでいたり、 +
+Docker Enterprise, Docker for Desktop と呼んでいたりで、ややこしい。
