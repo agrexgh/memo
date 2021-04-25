@@ -1,13 +1,15 @@
 = mody のインストール方法
 
 dockerはdocker-engine を商用に使うと知らないうちに怖いことになりそう（ライセンス違反を踏んでしまう？）なので、 +
-オープンソース版dockerである moby-engine を使うことにする。
+オープンソース版dockerである moby-engine を使うことにする。 +
+多分、何らかの商品などに組み込まない限りは、dockerで大丈夫なんだろうけど。。
 
 多分由来は白鯨のモビー・ディック。
 
 == 結論としてやれば良いこと
 
-Ubuntu-20.04 ならば、以下コマンドを１行ずつ実行すればインストールされる。
+. 理由は後述するが、 *先に https://docs.docker.com/engine/install/ubuntu/[Docker公式のインストール手順]に従ってdockerをインストールしておく。*  +
+. 以下コマンドを１行ずつ実行する（Ubuntu-20.04の場合）。
 
 ```Shell
 $ curl https://packages.microsoft.com/config/ubuntu/20.04/prod.list > ./microsoft-prod.list
@@ -33,6 +35,11 @@ Docker version 20.10.5+azure, build 55c4c88966a912ddb365e2d73a4969e700fc458f
 $ docker --version
 Docker version 20.10.5, build 55c4c88
 ```
+
+== 先にDocker公式ページに従ってインストールする理由
+
+mobyだけインストールすると `sudo service docker start` で `unrecognized service` と表示されるため。 +
+理由はまだよくわかってない。
 
 == 参考文献
 
