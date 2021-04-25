@@ -1,0 +1,13 @@
+= Ubuntuで最新のgit インストール手順
+
+Ubuntuは初期状態では、 +
+apt upgrade しても少し古い git のバージョンまでしかアップデートされない。
+
+そこで以下コマンドを実行し、 +
+gitの最新Verを取得するように設定する。
+
+```Shell
+$ sudo add-apt-repository ppa:git-core/ppa
+$ sudo apt update
+$ sudo apt upgrade -y #または sudo apt install git -y
+```
